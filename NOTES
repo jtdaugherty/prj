@@ -18,6 +18,9 @@ Requirements:
   - should be easy to know when you are "in" a project (e.g., by
     modifying the prompt in a predictable way)
 
+  - should support hostname-based hooks for loading host-specific
+    configuration scripts
+
   - should be easy to "enter" a project (not sure whether it's
     feasible to support "leaving" a project in any way other than
     exiting the shell)
