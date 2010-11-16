@@ -15,13 +15,15 @@ Requirements:
   - does not *replace* running shell like prj-old; merely augments it
     with project-specific stuff
 
-  - should be easy to know when you are "in" a project
+  - should be easy to know when you are "in" a project (e.g., by
+    modifying the prompt in a predictable way)
 
   - should be easy to "enter" a project (not sure whether it's
     feasible to support "leaving" a project in any way other than
     exiting the shell)
 
-  - probably not shell-agnostic; just adopt bash and call it a day
+  - probably not reasonable to be shell-agnostic; just adopt bash and
+    call it a day
 
   - should provide infrastructure for managing things like env,
     functions, etc. with hooks for loading new scripts and installing
@@ -35,9 +37,17 @@ Requirements:
     shell history (see "history" shell builtin command for ability to
     read, write, and set history file)
 
+  - where possible, the project initialization script(s) created by
+    prj and managed by the user should also be usable without prj;
+    this probably isn't reasonable if we want prj to provide some nice
+    functions for making it easier to write scripts
+
 Integration:
 
-  - Add a very, very minimal amount of code to ~/.bashrc
+  - Add a very, very minimal amount of code to ~/.bashrc; hopefully
+    something as simple as
+
+      . /path/to/prj.sh
 
 Commands:
 
