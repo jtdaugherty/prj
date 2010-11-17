@@ -11,7 +11,7 @@ function prj-init {
     strict_mkdir $path/$PRJ_DIR && \
         strict_mkdir $path/$HOSTS_DIR && \
         strict_mkdir $path/$AUTOLOAD_DIR && \
-        touch $path/$MAIN_PATH && \
+        touch $path/$MAIN_SCRIPT_PATH && \
         notice "Created project directory in $path" && \
         prj-register
 }
