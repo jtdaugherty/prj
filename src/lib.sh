@@ -161,3 +161,37 @@ function active_project {
 function clear_active_project {
     export PRJ=
 }
+
+function resolve_path {
+    echo $1
+}
+
+function in_PATH {
+    local _ENTRY=$(resolve_path $1)
+
+    for entry in $(split_PATH)
+    do
+        if [ "$entry" == "$_ENTRY" ]
+        then
+            return 0
+        fi
+    done
+
+    return 1
+}
+
+function add_PATH {
+    local _NEW_ENTRY=$1
+
+    if ! in_PATH $_NEW_ENTRY
+    then
+        PATH=$_NEW_ENTRY:$PATH
+    fi
+}
+
+function split_PATH {
+    for entry in $(echo $PATH | sed "s/:/ /g")
+    do
+        echo $(resolve_path $entry)
+    done
+}
