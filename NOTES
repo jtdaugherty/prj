@@ -92,3 +92,10 @@ Misc:
   - A project's files should NEVER need to specify its path
     absolutely, but should be provided with a variable for referring
     to the project's directory
+
+  - Is it possible to trap exits from invoked project scripts to
+    prevent the parent shell from exiting?
+
+  - Make it possible to support multiple loaded projects since that
+    will be common (e.g., my "home" project for my own settings in
+    ~/prj and the work project I'm working on)
