@@ -79,7 +79,7 @@ function ensure_dir {
 }
 
 function registered_project_names {
-    ensure_dir $REGISTRY || return 1;
+    ensure_dir $REGISTRY || return 1
 
     for f in $REGISTRY/*
     do
@@ -103,7 +103,7 @@ function project_path_from_name {
 
 function ensure_registered_name {
     local project_name=$1;
-    ensure_dir $REGISTRY || return 1;
+    ensure_dir $REGISTRY || return 1
 
     for p_name in $(registered_project_names)
     do
@@ -117,7 +117,7 @@ function ensure_registered_name {
 
 function ensure_registered_path {
     local path=$1;
-    ensure_dir $REGISTRY || return 1;
+    ensure_dir $REGISTRY || return 1
 
     for p_name in $(registered_project_names)
     do

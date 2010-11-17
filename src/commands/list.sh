@@ -1,6 +1,6 @@
 
 function prj-list {
-    ensure_dir $REGISTRY
+    ensure_dir $REGISTRY || return 1
 
     local i=0;
     for p_name in $(registered_project_names)
