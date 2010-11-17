@@ -14,5 +14,6 @@ function prj-init {
         touch $path/$MAIN_SCRIPT_PATH && \
         touch $path/$HOSTS_DIR/$(hostname).sh && \
         notice "Created project directory in $path" && \
-        prj-register
+        prj-register && \
+        notice "Run 'prj $(project_name_from_path $path)' to activate project"
 }
