@@ -30,10 +30,13 @@ function prj-load() {
 
     # Load the project's autoload scripts (order should be
     # unimportant)
+    # XXX TODO
 
     # Load the host-specific script, if any
+    # XXX TODO
 
     # Load and fixup the shell history
+    # XXX TODO
 
     export PRJ=$project_name
     notice "Project '$project_name' loaded"
