@@ -23,7 +23,10 @@ function prj-load() {
         return 1
     fi
 
+    local path=$(project_path_from_name $project_name)
+
     # Load the project's main script
+    . $path/$MAIN_SCRIPT_PATH || { clear_active_project; return 1; }
 
     # Load the project's autoload scripts (order should be
     # unimportant)

@@ -15,7 +15,7 @@ HOSTS_DIR=$PRJ_DIR/hosts
 AUTOLOAD_DIR=$PRJ_DIR/autoload.d
 
 # Main script path
-MAIN_PATH=$PRJ_DIR/main.sh
+MAIN_SCRIPT_PATH=$PRJ_DIR/main.sh
 
 #######################################################
 # Real paths
