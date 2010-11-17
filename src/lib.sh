@@ -145,3 +145,19 @@ function project_name_from_path {
 
     return 1;
 }
+
+function ensure_active_project {
+    if [ "$PRJ" == "" ]
+    then
+        return 1
+    fi
+    return 0
+}
+
+function active_project {
+    ensure_active_project && echo $PRJ
+}
+
+function clear_active_project {
+    export PRJ=
+}
