@@ -73,10 +73,10 @@ function prj {
         return 1
     fi
 
+    prj-load $project_name
+
     # Change to project directory
     cd $(project_path_from_name $project_name)
-
-    prj-load $project_name
 }
 
 function prj-reload {
