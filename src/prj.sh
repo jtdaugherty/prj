@@ -22,3 +22,9 @@ VERBOSE=1
 
 . $LIB
 load_commands $COMMANDS
+
+# If a project is already set, load that project
+if [ "$PRJ" != "" ]
+then
+    prj-reload
+fi
