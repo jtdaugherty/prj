@@ -42,7 +42,17 @@ function prj-load() {
     # Load and fixup the shell history
     # XXX TODO
 
+    # Change prompt
+    # XXX make it possible to suppress / customize this behavior
+    if [ "$OLD_PS1" == "" ]
+    then
+        # Prompt has never been backed up so we can save it
+        export OLD_PS1=$PS1
+    fi
+
+    export PS1="($project_name) $OLD_PS1"
     export PRJ=$project_name
+
     notice "Project '$project_name' loaded"
 }
 
