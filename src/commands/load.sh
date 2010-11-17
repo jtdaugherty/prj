@@ -4,8 +4,9 @@ function prj-load() {
 
     if ensure_active_project
     then
-        err "Project '$(active_project)' already active"
-        return 1
+        err "Project '$(active_project)' already active; reloading"
+        prj-reload
+        return 0
     fi
 
     if [ "$project_name" == "" ]
