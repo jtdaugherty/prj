@@ -33,7 +33,11 @@ function prj-load() {
     # XXX TODO
 
     # Load the host-specific script, if any
-    # XXX TODO
+    local host_script=$path/$HOSTS_DIR/$(hostname).sh
+    if [ -e $host_script ]
+    then
+        . $host_script
+    fi
 
     # Load and fixup the shell history
     # XXX TODO
