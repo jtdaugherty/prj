@@ -16,7 +16,9 @@ Requirements:
     with project-specific stuff
 
   - should be easy to know when you are "in" a project (e.g., by
-    modifying the prompt in a predictable way)
+    modifying the prompt in a predictable way).  Should be easy to
+    suppress and replace if the user doesn't like the default behavior
+    (e.g., multi-line prompt)
 
   - should support hostname-based hooks for loading host-specific
     configuration scripts
