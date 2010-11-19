@@ -18,7 +18,7 @@ COMMANDS=$HERE/commands
 LIB=$HERE/lib.sh
 
 # Verbose mode?
-VERBOSE=1
+VERBOSE=0
 
 . $LIB
 load_commands $COMMANDS
