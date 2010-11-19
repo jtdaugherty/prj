@@ -17,6 +17,9 @@ AUTOLOAD_DIR=$PRJ_DIR/autoload.d
 # Main script path
 MAIN_SCRIPT_PATH=$PRJ_DIR/main.sh
 
+# History path
+HISTORY_PATH=$PRJ_DIR/bash_history
+
 #######################################################
 # Real paths
 
@@ -81,11 +84,20 @@ function ensure_dir {
 function registered_project_names {
     ensure_dir $REGISTRY || return 1
 
-    for f in $REGISTRY/*
+    for f in $(all_files $REGISTRY)
+    do
+        echo $f
+    done
+}
+
+function all_files {
+    local path=$1;
+
+    for f in $path/*
     do
         # Disgusting hack since the * will not expand to the empty
         # list
-        if [ "$f" == "$REGISTRY/*" ]
+        if [ "$f" == "$path/*" ]
         then
             return 0
         fi

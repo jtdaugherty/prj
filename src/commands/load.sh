@@ -30,7 +30,10 @@ function prj-load() {
 
     # Load the project's autoload scripts (order should be
     # unimportant)
-    # XXX TODO
+    for f in $(all_files $path/$AUTOLOAD_DIR)
+    do
+        . $path/$AUTOLOAD_DIR/$f
+    done
 
     # Load the host-specific script, if any
     local host_script=$path/$HOSTS_DIR/$(hostname).sh
@@ -39,19 +42,34 @@ function prj-load() {
         . $host_script
     fi
 
-    # Load and fixup the shell history
-    # XXX TODO
+    # Set up the project-specific shell history (but only if we aren't
+    # reloading a project)
 
-    # Change prompt
-    # XXX make it possible to suppress / customize this behavior
-    if [ "$OLD_PS1" == "" ]
+    if [ "$OLD_PRJ" == "" ]
     then
-        # Prompt has never been backed up so we can save it
-        export OLD_PS1=$PS1
+        # Flush the existing history
+        history -a
+
+        # Set HISTFILE
+        export HISTFILE=$path/$HISTORY_PATH
+
+        # Load the history from the new history file
+        history -r
     fi
 
-    export PS1="($project_name) $OLD_PS1"
     export PRJ=$project_name
+
+    # Change prompt
+    if [ "$PRJ_NO_AUTO_PROMPT" == "" ]
+    then
+        if [ "$OLD_PS1" == "" ]
+        then
+            # Prompt has never been backed up so we can save it
+            export OLD_PS1=$PS1
+        fi
+
+        export PS1="<$PRJ> $OLD_PS1"
+    fi
 
     notice "Project '$project_name' loaded"
 }
@@ -89,6 +107,8 @@ function prj-reload {
     local project_name=$(active_project)
 
     echo "Reloading $project_name"
+
+    export OLD_PRJ=$PRJ
     clear_active_project
     prj-load $project_name
 }
