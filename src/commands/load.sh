@@ -44,7 +44,6 @@ function prj-load() {
 
     # Set up the project-specific shell history (but only if we aren't
     # reloading a project)
-
     if [ "$OLD_PRJ" == "" ]
     then
         # Flush the existing history
