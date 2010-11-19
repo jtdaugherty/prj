@@ -25,6 +25,11 @@ function prj-load() {
 
     local path=$(project_path_from_name $project_name)
 
+    # Set these variables now so they'll be available for the
+    # project's scripts
+    export PRJ=$project_name
+    export PRJ_HOME=$path
+
     # Load the project's main script
     . $path/$MAIN_SCRIPT_PATH || { clear_active_project; return 1; }
 
@@ -55,9 +60,6 @@ function prj-load() {
         # Load the history from the new history file
         history -r
     fi
-
-    export PRJ=$project_name
-    export PRJ_HOME=$path
 
     # Change prompt
     if [ "$PRJ_NO_AUTO_PROMPT" == "" ]
