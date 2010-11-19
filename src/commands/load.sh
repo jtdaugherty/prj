@@ -57,6 +57,7 @@ function prj-load() {
     fi
 
     export PRJ=$project_name
+    export PRJ_HOME=$path
 
     # Change prompt
     if [ "$PRJ_NO_AUTO_PROMPT" == "" ]
@@ -93,7 +94,7 @@ function prj {
     prj-load $project_name
 
     # Change to project directory
-    cd $(project_path_from_name $project_name)
+    cdprj
 }
 
 function prj-reload {

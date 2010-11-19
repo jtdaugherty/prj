@@ -6,6 +6,5 @@ function cdprj {
         return 1
     fi
 
-    local project_name=$(active_project)
-    cd $(project_path_from_name $project_name)
+    cd $PRJ_HOME
 }
