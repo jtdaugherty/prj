@@ -1,0 +1,39 @@
+To get started, include the prj tool in your own shell script:
+
+  . /path/to/prj/src/prj.sh
+
+To initialize and register project:
+
+  mkdir myproject
+  cd myproject
+  prj-init
+
+This will generate a "prj" directory in myproject/:
+
+  prj/main.sh
+  prj/hosts/<your hostname>.sh
+  prj/autoload.d/
+
+Any scripts in autoload.d will be loaded on any host.  A hostname-specific
+script will be loaded from hosts/.  The main script will also always be
+loaded.
+
+The prj tool exposes some functions for your use in these scripts; at
+present, the most useful one is add_PATH:
+
+  add_PATH /some/directory
+
+This will always add the specified directory to your PATH unless it is
+already in the PATH.
+
+To show registered projects:
+
+  prj-list
+
+To reload an active project:
+
+  prj-reload
+
+To change directories to an active project's home:
+
+  cdprj
