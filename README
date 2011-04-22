@@ -26,6 +26,11 @@ present, the most useful one is add_PATH:
 This will always add the specified directory to your PATH unless it is
 already in the PATH.
 
+To change to a project from a normal shell, where <name> is the name of
+a registered project:
+
+  prj <name>
+
 To show registered projects:
 
   prj-list
