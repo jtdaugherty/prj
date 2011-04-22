@@ -26,5 +26,5 @@ load_commands $COMMANDS
 # If a project is already set, load that project
 if [ "$PRJ" != "" ]
 then
-    prj-reload
+    SILENT=1 prj-reload
 fi

@@ -108,7 +108,7 @@ function prj-reload {
 
     local project_name=$(active_project)
 
-    echo "Reloading $project_name"
+    notice "Reloading $project_name"
 
     export OLD_PRJ=$PRJ
     clear_active_project

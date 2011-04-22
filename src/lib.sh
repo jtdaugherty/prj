@@ -34,7 +34,10 @@ function verbose {
 }
 
 function notice {
-    echo "$@"
+    if [ "$SILENT" == "" ]
+    then
+        echo "$@"
+    fi
 }
 
 function err {
