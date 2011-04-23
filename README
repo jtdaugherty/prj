@@ -65,8 +65,10 @@ present, the most useful one is add_PATH:
   add_PATH /some/directory
 
 This will always add the specified directory to your PATH unless it is
-already in the PATH.  This allows you to avoid difficult-to-read PATH
-lines.
+already in the PATH.  prj provides this function to make it easy to
+"reload" projects; it should be possible to run the project's scripts
+multiple times in the same shell, but ordinary PATH concatenation
+would result in a huge PATH with duplicate entries.
 
 In addition to functions, prj sets some environment variables for the
 active project:
