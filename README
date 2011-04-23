@@ -78,6 +78,11 @@ active project:
   PRJ_HOME              The path to the active project; this is the
                         path containing the prj/ subdirectory.
 
+Note that if the PRJ environment variable is already set at the time
+that you load the prj tool in your shell configuration, 'prj' will
+automatically try to load that project.  This is useful, e.g., if you
+set PRJ and then invoke a tool like GNU screen or tmux.
+
 To activate a project in the current shell, pass the project's name to
 'prj':
 
