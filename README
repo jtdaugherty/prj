@@ -1,6 +1,8 @@
 
 'prj' is a tool for managing project-specific shell environments.  It
-has been tested with (and written for) bash on Linux systems.
+has been tested with (and written for) bash on Linux systems.  prj
+also works on Mac OS X systems if you have the 'greadlink' program
+from MacPorts.
 
 prj works by maintaining a list of "registered" projects on your
 filesystem.  A "project" is just a directory with a "prj/"
