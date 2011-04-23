@@ -1,6 +1,44 @@
+
+'prj' is a tool for managing project-specific shell environments.  It
+has been tested with (and written for) bash on Linux systems.
+
+prj works by maintaining a list of "registered" projects on your
+filesystem.  A "project" is just a directory with a "prj/"
+subdirectory containing some special shell scripts.  Once a project
+has been initialized with "prj-init", it will be known to prj and will
+be visible with the "prj-list" command.  Then you can activate the
+shell configuration for a project -- thus making it the "current"
+project -- with the "prj" command.
+
 To get started, include the prj tool in your own shell script:
 
   . /path/to/prj/src/prj.sh
+
+Once loaded, the tool will provide a number of functions for
+interactive use:
+
+  prj-init           In a directory, run this to create the prj/
+                     subdirectory and register the project directory.
+
+  prj-register       In a directory with a prj/ subdirectory, run this
+                     to regiser the project with prj.  This is useful
+                     when you get a revision control copy of someone
+                     else's project source and need to make the
+                     project known to prj.
+
+  prj-unregister     In a directory with a prj/ subdirectory, run this
+                     to unregister the project with prj.
+
+  prj-list           Run this to see a list of registered projects'
+                     names and paths.
+
+  cdprj              When a project is active, this command will 'cd'
+                     to the project's home directory.
+
+  prj-reload         When a project is active, this command will
+                     reload the project's shell environment by
+                     re-running all of the relevant project shell
+                     scripts.
 
 To initialize and register project:
 
@@ -8,15 +46,18 @@ To initialize and register project:
   cd myproject
   prj-init
 
-This will generate a "prj" directory in myproject/:
+This will generate a "prj" directory in myproject/ with the following
+layout:
 
   prj/main.sh
   prj/hosts/<your hostname>.sh
   prj/autoload.d/
 
-Any scripts in autoload.d will be loaded on any host.  A hostname-specific
-script will be loaded from hosts/.  The main script will also always be
-loaded.
+When you run prj to activate a project, it runs these scripts.  Any
+scripts in autoload.d will be loaded regardless of the host on which
+'prj' is run, but prj will use the local hostname to run a
+host-specific script in hosts/.  The main.sh script will always be
+run.
 
 The prj tool exposes some functions for your use in these scripts; at
 present, the most useful one is add_PATH:
@@ -24,14 +65,28 @@ present, the most useful one is add_PATH:
   add_PATH /some/directory
 
 This will always add the specified directory to your PATH unless it is
-already in the PATH.
+already in the PATH.  This allows you to avoid difficult-to-read PATH
+lines.
 
-To change to a project from a normal shell, where <name> is the name of
-a registered project:
+In addition to functions, prj sets some environment variables for the
+active project:
+
+  PRJ                   The name of the active project; this is the
+                        name of the directory containing the prj/
+                        subdirectory.
+
+  PRJ_HOME              The path to the active project; this is the
+                        path containing the prj/ subdirectory.
+
+To activate a project in the current shell, pass the project's name to
+'prj':
 
   prj <name>
 
-To show registered projects:
+Once a project is active, 'prj' will modify your shell prompt to
+indicate the current project.
+
+To show registered projects' names and paths:
 
   prj-list
 
