@@ -28,6 +28,9 @@ interactive use:
 
   prj-unregister     In a directory with a prj/ subdirectory, run this
                      to unregister the project with prj.
+                     prj-unregister will assume the current directory
+                     unless you specify a path to a project to
+                     unregister.
 
   prj-list           Run this to see a list of registered projects'
                      names and paths.
