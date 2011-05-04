@@ -41,10 +41,17 @@ function prj-load() {
     done
 
     # Load the host-specific script, if any
-    local host_script=$path/$HOSTS_DIR/$(hostname).sh
+    local host_script=$path/$HOSTS_DIR/$(hostname)/main.sh
     if [ -e $host_script ]
     then
         . $host_script
+    fi
+
+    # Load the host-specific script, if any
+    local user_script=$path/$HOSTS_DIR/$(hostname)/users/$(whoami).sh
+    if [ -e $user_script ]
+    then
+        . $user_script
     fi
 
     # Set up the project-specific shell history (but only if we aren't
