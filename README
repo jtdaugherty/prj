@@ -55,14 +55,16 @@ This will generate a "prj" directory in myproject/ with the following
 layout:
 
   prj/main.sh
-  prj/hosts/<your hostname>.sh
+  prj/hosts/<your hostname>/main.sh
+  prj/hosts/<your hostname>/users/<your username>.sh
   prj/autoload.d/
 
 When you run prj to activate a project, it runs these scripts.  Any
 scripts in autoload.d will be loaded regardless of the host on which
 'prj' is run, but prj will use the local hostname to run a
-host-specific script in hosts/.  The main.sh script will always be
-run.
+host-specific script in hosts/, as well as your local username to run
+the username-specific script on the current host.  The main.sh script
+will always be run.
 
 The prj tool exposes some functions for your use in these scripts; at
 present, the most useful one is add_PATH:
