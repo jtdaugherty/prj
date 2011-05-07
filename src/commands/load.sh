@@ -47,7 +47,7 @@ function prj-load() {
         . $host_script
     fi
 
-    # Load the host-specific script, if any
+    # Load the user-specific script, if any
     local user_script=$path/$HOSTS_DIR/$(hostname)/users/$(whoami).sh
     if [ -e $user_script ]
     then
