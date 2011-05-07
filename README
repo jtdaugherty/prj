@@ -102,6 +102,12 @@ indicate the current project.  To suppress the prompt modification
 behavior, set PRJ_NO_AUTO_PROMPT before loading the prj scripts in
 your shell configuration.
 
+prj will also modify your shell history settings to use a
+project-specific history file, 'bash_history', in the 'prj' directory
+for your project.  In addition, the shell will be reconfigured to
+always append history entries rather than replacing them on shell
+exit.
+
 To show registered projects' names and paths:
 
   prj-list
