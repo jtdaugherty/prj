@@ -98,7 +98,9 @@ To activate a project in the current shell, pass the project's name to
   prj <name>
 
 Once a project is active, 'prj' will modify your shell prompt to
-indicate the current project.
+indicate the current project.  To suppress the prompt modification
+behavior, set PRJ_NO_AUTO_PROMPT before loading the prj scripts in
+your shell configuration.
 
 To show registered projects' names and paths:
 
