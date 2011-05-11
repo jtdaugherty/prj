@@ -61,6 +61,9 @@ function prj-load() {
         # Flush the existing history
         history -a
 
+        # Configure shell to append history on exit
+        shopt -sq histappend
+
         # Set HISTFILE
         export HISTFILE=$HOME/.bash_history.$PRJ
 
