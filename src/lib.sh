@@ -17,9 +17,6 @@ AUTOLOAD_DIR=$PRJ_DIR/autoload.d
 # Main script path
 MAIN_SCRIPT_PATH=$PRJ_DIR/main.sh
 
-# History path
-HISTORY_PATH=$PRJ_DIR/bash_history
-
 #######################################################
 # Real paths
 

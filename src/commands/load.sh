@@ -55,7 +55,7 @@ function prj-load() {
         history -a
 
         # Set HISTFILE
-        export HISTFILE=$path/$HISTORY_PATH
+        export HISTFILE=$HOME/.bash_history.$PRJ
 
         # Load the history from the new history file
         history -r
