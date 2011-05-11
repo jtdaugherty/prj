@@ -23,6 +23,27 @@ MAIN_SCRIPT_PATH=$PRJ_DIR/main.sh
 # Path to directory where projects are registered
 REGISTRY=$HOME/.projects/
 
+function local_readlink {
+    local rl=""
+
+    # Is the readlink GNU-like?  Does -f mean what we expect?
+    if which readlink > /dev/null && readlink -f x >/dev/null 2>&1
+    then
+        rl=readlink
+    elif which greadlink > /dev/null
+    then
+        rl=greadlink
+    fi
+
+    if [[ "$rl" == "" ]]
+    then
+        err "prj requires a GNU-like readlink tool; tried 'readlink' and 'greadlink'."
+        return 1
+    else
+        $rl $@
+    fi
+}
+
 function verbose {
     if [[ $VERBOSE > 0 ]]
     then
@@ -110,7 +131,7 @@ function project_path_from_name {
     local project_name=$1;
 
     ensure_registered_name $project_name && \
-        readlink -f $REGISTRY/$1
+        local_readlink -f $REGISTRY/$1
 }
 
 function ensure_registered_name {

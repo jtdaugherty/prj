@@ -1,20 +1,22 @@
 
 function prj-unregister {
-    local path=$(pwd)
-    local project_name=$(basename $path)
+    local path=""
 
-    # XXX make it so that a path can be unregistered even if it is not
-    # a project (i.e., it got removed but is still registered)
+    if [[ "$1" != "" ]]
+    then
+        path=$1
+    else
+        path=$(pwd)
+    fi
+
+    local project_name=$(basename $path)
 
     # Also do something about registered projects that don't even
     # exist
 
-    # Also make it so you can specify a project name OR path instead
-    # of assuming the cwd
+    # Also make it so you can specify a project name OR path
 
-    (is_project $path ||
-        (echo "$path is not a project; run prj-init instead" && return 1)) && \
-        (ensure_registered_path $path ||
+    (ensure_registered_path $path ||
         (echo "$path is not registered; run prj-register to register it" && return 1)) && \
         rm -f $REGISTRY/$project_name && \
         notice "Project $project_name unregistered"
